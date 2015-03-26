@@ -1,0 +1,12 @@
+{exp:favorites:info entry_id="{if segment_3}{segment_3}{if:else}{embed:entry_id}{/if}" disable_pagination="yes"}
+    	{exp:favorites:edit return="jobs/favoritestarform/{if segment_3}{segment_3}{if:else}{embed:entry_id}{/if}" form:class="favorite_form" favorite_id="{favorites:favorite_id}"}
+            <input type="hidden" name="delete" value="yes">
+            <input type="submit" name="submit" value="Remove" />
+        {/exp:favorites:edit}
+    {if favorites:no_results}
+        {exp:favorites:form return="jobs/favoritestarform/{if segment_3}{segment_3}{if:else}{embed:entry_id}{/if}" form:class="favorite_form" entry_id="{if segment_3}{segment_3}{if:else}{embed:entry_id}{/if}"}
+            <input type="hidden" name="collection" value="jobs" />
+            <input type="submit" name="submit" value="Add" />
+        {/exp:favorites:form}
+    {/if}
+{/exp:favorites:info}

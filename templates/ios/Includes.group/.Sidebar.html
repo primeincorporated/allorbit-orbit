@@ -1,0 +1,17 @@
+{if logged_in_group_id == 5}{!-- MEMBERS --}
+<ul class="side_navigation">
+	<li><a href="{path='jobs/search'}">Search Jobs</a></li>
+	<li><a href="{path='jobs/favorites'}">Interested In</a></li>
+	<li><a href="{path='jobs/managers'}">Managers</a></li>
+	<li><a href="{global_url}account/profile">Your Account</a></li>
+	<li><a href="{global_url}account/password">Change Login / Password</a></li>
+</ul>
+{if:else}{!-- MANAGERS --}
+<ul class="side_navigation">
+	<li><a href="{path='search/candidates'}">Search Candidates</a></li>
+	<li><a href="{path='manage/candidates'}">Candidates</a></li>
+	<li><a href="{path='manage/jobs'}">Your Posted Jobs</a></li>
+	<li><a href="{global_url}account/profile">Your Account</a></li>
+	<li><a href="{global_url}account/password">Change Login / Password</a></li>
+</ul>
+{/if}

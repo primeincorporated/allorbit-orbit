@@ -1,0 +1,84 @@
+{embed="Includes/.Source"}
+
+	</head>
+	
+	<body>
+		{embed="Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12 col-md-2">
+				{embed="Includes/.Sidebar"}
+			</div>
+			<div class="col-xs-12 col-md-10">
+				<h3>Create Or Edit Position</h3>
+				{exp:channel:form channel="jobs" return="manage/jobs/ENTRY_ID" author_only="yes" entry_id="{segment_3}"}
+					<div class="col-xs-12">
+						<label for="title">Position Title</label>
+						<input type="text" name="title" value="{title}" />
+					</div>
+				
+					<div class="col-xs-12 col-md-6">
+						<label for="job_pdf">{label:job_pdf}</label>
+						{field:job_pdf}
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<label for="status">Job Status</label>
+						<select name="status" id="status">
+							{statuses}
+						    	<option value="{status}"{selected}>{status}</option>
+							{/statuses}
+						</select>
+					</div>
+					<div class="col-xs-12">
+						<label for="job_application_url">{label:job_application_url}</label>
+						{field:job_application_url}
+					</div>
+					<div class="col-xs-12">
+						<label for="job_description">{label:job_description}</label>
+						{field:job_description}
+					</div>
+					<div class="clear"></div>
+					<h3>Optional</h3>
+					<div class="col-xs-12">
+						<label for="job_skills">{label:job_skills}</label>
+						<p class="job_instructions">{instructions:job_skills}</p>
+						{field:job_skills}
+					</div>
+					<div class="col-xs-12 col-md-4">
+						<label for="job_experience">{label:job_experience}</label>
+						<p class="job_instructions">{instructions:job_experience}</p>
+						{field:job_experience}
+					</div>
+					<div class="col-xs-12 col-md-4">
+						<label for="job_duration">{label:job_duration}</label>
+						<p class="job_instructions">{instructions:job_duration}</p>
+						{field:job_duration}
+					</div>
+					<div class="col-xs-12 col-md-4">
+						<label for="job_relocation">{label:job_relocation}</label>
+						<p class="job_instructions">{instructions:job_relocation}</p>
+						{field:job_relocation}
+					</div>
+					<div class="col-xs-12">
+						<div class="hidden">
+							{field:job_aptitude}
+						</div>
+						<a onclick="" class="button">Click To Request Apltitude Test</a>
+					</div>
+					<div class="clear"></div>
+					<div class="col-xs-12 col-md-3">
+						<input type="submit" value="{if segment_3}Update{if:else}Create{/if}" class="button" />
+					</div>
+					<div class="col-xs-12 col-md-3">
+						<a href="" class="button">Cancel</a>
+					</div>
+					<div class="col-xs-12 col-md-3">
+						<a href="{path='{segment_1}/{segment_2}/{segment_3}'}" class="button">Reset</a>
+					</div>
+				{/exp:channel:form}
+			</div>
+		</div>
+		
+		{embed="Includes/.Footer"}
+	</body>
+</html>

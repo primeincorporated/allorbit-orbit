@@ -1,0 +1,15 @@
+{exp:channel:form 
+	class="status_forms"
+	channel="jobs" 
+	entry_id="{embed:entry_id}"
+	return="manage/jobs" 
+	author_only="yes" 
+	include_assets="no"
+	json="yes"
+}
+	<select name="status" id="status">
+		{statuses}
+			<option value="{status}"{selected}>{status}</option>
+		{/statuses}
+	</select>
+{/exp:channel:form}

@@ -1,0 +1,94 @@
+{embed="Includes/.Source"}
+		<script type="text/javascript" src="{global_url}assets/js/jquery.form.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".favorite_form").each(function(){
+					setupFavoriteForm($(this));
+				});
+			});
+			
+			function setupFavoriteForm(form){
+				form.ajaxForm({
+                    success: function(data) {
+	                    var parent = form.parent();
+	                    parent.html(data);
+	                    setupFavoriteForm(parent.children("form"));
+                    }
+				});
+			}
+		</script>
+	</head>
+	
+	<body>
+		{embed="Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12 col-md-2">
+				{embed="Includes/.Sidebar"}
+			</div>
+			<div class="col-xs-12 col-md-10">
+				<h3>Search Jobs</h3>
+				<div class="col-xs-6">
+					<label>FILTER JOBS</label>
+					<input type="text" />
+					
+					<label>Show Number</label>
+					<select>
+						<option value="10">10</option>
+						<option value="25">25</option>
+						<option value="50">50</option>
+					</select>
+				</div>
+				<div class="col-xs-6">
+					
+				</div>
+				<table class="col-xs-12">
+					<tr>
+						<th>Interested In</th>
+						<th>Position</th>
+						<th>Hiring Manager</th>
+						<th>Company</th>
+						<th>Skills</th>
+						<th>Short Description</th>
+					</tr>
+				{exp:channel:entries 
+					channel="jobs"  
+					limit="10" 
+					dynamic="no" 
+					paginate="bottom"
+					status="open"
+				}
+					<tr>
+						<td>
+							{embed="jobs/favoritestarform" entry_id="{entry_id}" member_id="{logged_in_member_id}"}
+						</td>
+						<td><a href="{permalink='jobs'}">{title}</a></td>
+						<td>
+							{exp:freemember:members member_id="{author_id}"}
+							    {first_name} {last_name}
+							{/exp:freemember:members}
+						</td>
+						<td>
+							{exp:freemember:members member_id="{author_id}"}
+							    <p>{company}</p>
+							{/exp:freemember:members}
+						</td>
+						<td>{job_skills}</td>
+						<td>
+							{exp:word_limit total="12"}
+								{job_description text_only="yes"}
+							{/exp:word_limit}
+						</td>
+					</tr>
+				
+				{paginate}
+					<p>Page {current_page} of {total_pages} pages {pagination_links}</p>
+				{/paginate}
+				{/exp:channel:entries}
+			</div>
+		</div>
+		
+		{embed="Includes/.Footer"}
+	</body>
+</html>

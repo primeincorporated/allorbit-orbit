@@ -1,0 +1,87 @@
+{embed="Includes/.Source"}
+		<script type="text/javascript" src="{global_url}assets/js/jquery.form.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".status_forms").ajaxForm({
+					dataType: 'json',
+                    success: function(data) {
+						console.log(data);
+                        if (data.success) {
+                            alert('You changed the status of '+ data.entry_id)
+                        } else {
+                            alert('Failed with the following errors: '+data.errors.join(', '));
+                        }
+                    }
+				});
+				$(".status_forms select").change(function(){
+					$(this).parent().submit();
+				});
+			});
+		</script>
+	</head>
+	
+	<body>
+		{embed="Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12 col-md-2">
+				{embed="Includes/.Sidebar"}
+			</div>
+			<div class="col-xs-12 col-md-10">
+				<h3>Your Posted Jobs</h3>
+				<div class="col-xs-6">
+					<label>FILTER JOBS</label>
+					<input type="text" />
+					
+					<label>Show Number</label>
+					<select>
+						<option value="10">10</option>
+						<option value="25">25</option>
+						<option value="50">50</option>
+					</select>
+				</div>
+				<div class="col-xs-6">
+					<a href="{path='manage/job'}" class="button">Create Req</a>
+				</div>
+				<table class="col-xs-12">
+					<tr>
+						<th>Status</th>
+						<th>Position</th>
+						<th># Interested</th>
+						<th>Posted On</th>
+						<th>Edit</th>
+					</tr>
+				{exp:channel:entries 
+					channel="jobs" 
+					author_id="CURRENT_USER" 
+					limit="12" 
+					dynamic="no" 
+					paginate="bottom"
+					status="open|closed|Hired"
+				}
+					<tr>
+						<td>
+							{embed="manage/.statusform" entry_id="{entry_id}"}
+						</td>
+						<td>{title}</td>
+						<td>
+							{exp:favorites:count entry_id="{entry_id}"}
+						</td>
+						<td>{entry_date format="%F %j, %Y %g:%i %A"}</td>
+						<td>
+							<a href="{permalink='manage/job'}">Edit Link</a>
+							<a href="">Delete Link</a>
+						</td>
+					</tr>
+				
+				{paginate}
+					<p>Page {current_page} of {total_pages} pages {pagination_links}</p>
+				{/paginate}
+				{/exp:channel:entries}
+			</div>
+		</div>
+		
+		{embed="Includes/.Footer"}
+	</body>
+</html>
