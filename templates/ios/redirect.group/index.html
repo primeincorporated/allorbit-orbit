@@ -1,0 +1,5 @@
+{if logged_in_group_id == 5 OR logged_in_group_id == 1}
+	{redirect="jobs/search"}
+{if:elseif logged_in_group_id == 6}
+	{redirect="manage/jobs"}
+{/if}

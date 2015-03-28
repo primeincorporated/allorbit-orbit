@@ -26,6 +26,7 @@
  */
  	require_once("config.php");
 	$system_path = '../server/system';
+	
 
 
 /*
@@ -90,8 +91,8 @@
  * set array indexes corresponding to them.
  *
  */
-//	$assign_to_config['template_group'] = '';
-//	$assign_to_config['template'] = '';
+$assign_to_config['template_group'] = 'redirect';
+$assign_to_config['template'] = 'index';
 //	$assign_to_config['site_index'] = '';
 //	$assign_to_config['site_404'] = '';
 //	$assign_to_config['global_vars'] = array(); // This array must be associative

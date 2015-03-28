@@ -35,9 +35,9 @@
 						<th class="col-xs-3">Name</th>
 						<th class="col-xs-1">Overall Experience</th>
 						<th class="col-xs-2">{site_name} Experience</th>
-						<th class="col-xs-3">Phone</th>
 						<th class="col-xs-3">Location</th>
 						<th class="col-xs-3">Email</th>
+						<th class="col-xs-3">Phone</th>
 					</tr>
 				
 				{exp:favorites:members
@@ -52,16 +52,15 @@
 							{embed="manage/favoritestarform" member_id="{member_id}"}
 						</td>
 						<td><a href="{permalink='search/job'}">{first_name} {last_name}</a></td>
+						{exp:profile:view member_id="{member_id}"}
+						<td>{overall_experience}</td>
 						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td>{city}, {region_state_province}</td>
 						<td>{email}</td>
+						<td>{phone}</td>
+						{/exp:profile:view}
 					</tr>
 					{/exp:freemember:members}
-				    {paginate}
-						<p>Page {current_page} of {total_pages} pages {pagination_links}</p>
-					{/paginate}
 				{/exp:favorites:members}
 			</div>
 		</div>
