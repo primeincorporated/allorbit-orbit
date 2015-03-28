@@ -1,0 +1,71 @@
+{embed="default_site:Includes/.Source"}
+		{embed="Includes/.Files" favorite_form="yes"}
+		<link type="text/css" rel="stylesheet" href="{site_url}assets/css/manage.css" />
+	</head>
+	
+	<body>
+		{embed="default_site:Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12 col-md-2">
+				{embed="Includes/.Sidebar"}
+			</div>
+			<div class="col-xs-12 col-md-10">
+				<h3 class="page_title">Favorite Candidates</h3>
+				<div class="col-xs-6 filters">
+					<div class="filter_search">
+						<label for="filter_search">FILTER CANDIDATES</label>
+						<input type="text" name="filter_search" />
+					</div>
+					<div class="filter_limit">
+						<label for="filter_limit">Show Number</label><br>
+						<select name="filter_limit">
+							<option value="10">10</option>
+							<option value="25">25</option>
+							<option value="50">50</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					
+				</div>
+				<table class="col-xs-12 manage_table">
+					<tr>
+						<th class="col-xs-1">Interested</th>
+						<th class="col-xs-3">Name</th>
+						<th class="col-xs-1">Overall Experience</th>
+						<th class="col-xs-2">{site_name} Experience</th>
+						<th class="col-xs-3">Phone</th>
+						<th class="col-xs-3">Location</th>
+						<th class="col-xs-3">Email</th>
+					</tr>
+				
+				{exp:favorites:members
+				    limit="10"
+				    orderby="first_name"
+				    sort="asc"
+				    paginate="bottom"
+				}
+					{exp:freemember:members member_id="{member_id}"}
+				    <tr>
+						<td>
+							{embed="manage/favoritestarform" member_id="{member_id}"}
+						</td>
+						<td><a href="{permalink='search/job'}">{first_name} {last_name}</a></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td>{email}</td>
+					</tr>
+					{/exp:freemember:members}
+				    {paginate}
+						<p>Page {current_page} of {total_pages} pages {pagination_links}</p>
+					{/paginate}
+				{/exp:favorites:members}
+			</div>
+		</div>
+		
+		{embed="default_site:Includes/.Footer"}
+	</body>
+</html>

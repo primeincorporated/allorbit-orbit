@@ -1,4 +1,5 @@
-{embed="Includes/.Source"}
+{embed="default_site:Includes/.Source"}
+		<link type="text/css" rel="stylesheet" href="{site_url}assets/css/jobs.css" />
 		<script type="text/javascript" src="{global_url}assets/js/jquery.form.js"></script>
 		
 		<script type="text/javascript">
@@ -21,37 +22,41 @@
 	</head>
 	
 	<body>
-		{embed="Includes/.Header"}
+		{embed="default_site:Includes/.Header"}
 		
 		<div class="container">
 			<div class="col-xs-12 col-md-2">
 				{embed="Includes/.Sidebar"}
 			</div>
 			<div class="col-xs-12 col-md-10">
-				<h3>Jobs you're interested in</h3>
-				<div class="col-xs-6">
-					<label>FILTER JOBS</label>
-					<input type="text" />
-					
-					<label>Show Number</label>
-					<select>
-						<option value="10">10</option>
-						<option value="25">25</option>
-						<option value="50">50</option>
-					</select>
+				<h3 class="page_title">Jobs you're interested in</h3>
+				<div class="col-xs-6 filters">
+					<div class="filter_search">
+						<label for="filter_search">FILTER JOBS</label>
+						<input type="text" name="filter_search" />
+					</div>
+					<div class="filter_limit">
+						<label for="filter_limit">Show Number</label><br>
+						<select name="filter_limit">
+							<option value="10">10</option>
+							<option value="25">25</option>
+							<option value="50">50</option>
+						</select>
+					</div>
 				</div>
 				<div class="col-xs-6">
 					
 				</div>
-				<table class="col-xs-12">
+				<table class="col-xs-12 jobs_table">
 					<tr>
-						<th>Interested In</th>
-						<th>Position</th>
-						<th>Hiring Manager</th>
-						<th>Company</th>
-						<th>Skills</th>
-						<th>Short Description</th>
+						<th class="col-xs-1">Interested In</th>
+						<th class="col-xs-2">Position</th>
+						<th class="col-xs-1">Hiring Manager</th>
+						<th class="col-xs-1">Company</th>
+						<th class="col-xs-2">Skills</th>
+						<th class="col-xs-4">Short Description</th>
 					</tr>
+					
 				{exp:favorites:entries
 				    channel="jobs"
 				    limit="10"
@@ -86,6 +91,6 @@
 			</div>
 		</div>
 		
-		{embed="Includes/.Footer"}
+		{embed="default_site:Includes/.Footer"}
 	</body>
 </html>

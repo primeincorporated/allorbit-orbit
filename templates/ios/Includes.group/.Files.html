@@ -1,0 +1,23 @@
+<script type="text/javascript" src="{global_url}assets/js/jquery.form.js"></script>
+
+<link type="text/css" rel="stylesheet" href="{site_url}assets/css/global.css" />
+
+{if embed:favorite_form == "yes"}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".favorite_form").each(function(){
+			setupFavoriteForm($(this));
+		});
+	});
+			
+	function setupFavoriteForm(form){
+		form.ajaxForm({
+        	success: function(data) {
+	            var parent = form.parent();
+	            parent.html(data);
+	            setupFavoriteForm(parent.children("form"));
+            }
+		});
+	}
+</script>
+{/if}

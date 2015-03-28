@@ -1,0 +1,16 @@
+.manage_table {
+	
+}
+.edit_links a {
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	margin: 10px 15px 0px;
+	text-align: center;
+}
+
+
+/* POSTED JOBS =====   */
+.create_req_button {
+	background-color: #eee;
+}
