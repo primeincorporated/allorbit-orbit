@@ -1,2 +1,4 @@
 .DS_STORE
 .htaccess
+index.php
+uploads/*

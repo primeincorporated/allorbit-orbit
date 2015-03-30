@@ -1,0 +1,14 @@
+{if segment_3 == "global" OR "{embed:global}" == "yes"}
+	<?php
+		$url = ee()->config->item('global_vars');
+		$url = $url['global_url'];
+		header("Location: ".$url."login/index");
+		exit();
+	?>
+{if:else}
+	{if logged_in_group_id == 5 OR logged_in_group_id == 1}
+		{redirect="jobs/search"}
+	{if:elseif logged_in_group_id == 6}
+		{redirect="manage/jobs"}
+	{/if}
+{/if}

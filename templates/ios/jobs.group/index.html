@@ -1,8 +1,9 @@
-{embed="Includes/.Source"}
+{embed="default_site:Includes/.Source"}
+		{embed="Includes/.Files"}
 	</head>
 	
 	<body>
-		{embed="Includes/.Header"}
+		{embed="default_site:Includes/.Header"}
 		
 		<div class="container">
 			<div class="col-xs-12 col-md-2">
@@ -36,7 +37,7 @@
 							<a href="" class="button">SEND PROFILE TO HIRING MANAGER</a>
 						</div>
 						<div class="col-xs-6">
-							<a href="" class="button">Back to Job Search</a>
+							<a href="{path='jobs/search'}" class="button">Back to Job Search</a>
 						</div>
 					</div>
 				</div>
@@ -44,6 +45,6 @@
 			{/exp:channel:entries}
 		</div>
 		
-		{embed="Includes/.Footer"}
+		{embed="default_site:Includes/.Footer"}
 	</body>
 </html>

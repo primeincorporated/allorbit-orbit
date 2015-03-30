@@ -2,6 +2,10 @@
 
 <link type="text/css" rel="stylesheet" href="{site_url}assets/css/global.css" />
 
+{if logged_out}
+	{embed="Includes/.Redirect" global="yes"}
+{/if}
+
 {if embed:favorite_form == "yes"}
 <script type="text/javascript">
 	$(document).ready(function(){
