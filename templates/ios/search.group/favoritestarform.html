@@ -1,0 +1,12 @@
+{exp:favorites:info entry_id="{embed:entry_id}" disable_pagination="yes"}
+    	{exp:favorites:edit return="search/favoritestarform" form:class="favorite_form" favorite_id="{favorites:favorite_id}"}
+            <input type="hidden" name="delete" value="yes">
+            <input type="submit" name="submit" value="Remove" />
+        {/exp:favorites:edit}
+    {if favorites:no_results}
+        {exp:favorites:form return="search/favoritestarform" form:class="favorite_form" entry_id="{embed:entry_id}"}
+            <input type="hidden" name="collection" value="jobs" />
+            <input type="submit" name="submit" value="Add" />
+        {/exp:favorites:form}
+    {/if}
+{/exp:favorites:info}

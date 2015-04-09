@@ -1,0 +1,12 @@
+{if "{exp:favorites:count entry_id="{embed:entry_id}" member_id="{embed:member_id}"}" == 0}
+	{exp:favorites:form form:class="favorite_form" entry_id="{embed:entry_id}"}
+		<input type="hidden" name="collection" value="jobs" />
+		<input type="submit" name="submit" value="Add" />
+	{/exp:favorites:form}
+{if:else}					    
+	{exp:favorites:edit entry_id="{embed:entry_id}" member_id="{embed:member_id}"}
+		<input type="hidden" name="delete" value="yes">
+		<input type="submit" name="submit" value="Remove" />
+	{/exp:favorites:edit}
+{/if}
+{exp:favorites:count entry_id="{embed:entry_id}" member_id="{embed:member_id}"}
