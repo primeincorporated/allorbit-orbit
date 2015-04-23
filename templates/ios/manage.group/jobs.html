@@ -40,16 +40,16 @@
 						</select>
 					</div>
 				</div>
-				<div class="col-xs-6">
-					<a href="{path='manage/job'}" class="button create_req_button">Create Req</a>
+				<div class="col-xs-3 col-xs-offset-3">
+					<a href="{path='manage/job'}" class="button greenButton">Create Req</a>
 				</div>
 				<table class="col-xs-12 manage_table">
 					<tr>
 						<th class="col-xs-1">Status</th>
-						<th class="col-xs-3">Position</th>
-						<th class="col-xs-1"># Interested</th>
+						<th class="col-xs-2">Position</th>
+						<th class="col-xs-3"># Interested</th>
 						<th class="col-xs-2">Posted On</th>
-						<th class="col-xs-3">Edit</th>
+						<th class="col-xs-1">Edit</th>
 					</tr>
 				{exp:channel:entries 
 					channel="jobs" 
@@ -63,14 +63,13 @@
 						<td>
 							{embed="manage/.statusform" entry_id="{entry_id}"}
 						</td>
-						<td>{title}</td>
+						<td><a href="{permalink='manage/job'}">{title}</a></td>
 						<td>
 							{exp:favorites:count entry_id="{entry_id}"}
 						</td>
 						<td>{entry_date format="%F %j, %Y %g:%i %A"}</td>
 						<td class="edit_links">
-							<a href="{permalink='manage/job'}">Edit Link</a>
-							<a href="">Delete Link</a>
+							<a href="">{exp:ce_img:single src="{global_url}assets/images/deleteIcon.png" height="25" class="deleteIcon"}</a>
 						</td>
 					</tr>
 				
